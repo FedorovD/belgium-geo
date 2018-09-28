@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body, .map {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map" class="map"></div>
+    <script type="text/javascript" src="https://yastatic.net/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=en_RU&coordorder=longlat"></script>
+    <script>
+        ymaps.ready(function () {
+
+            var map = new ymaps.Map('map', {
+                    center: [5.995165, 50.486998],
+                    zoom: 8,
+                    controls: ['zoomControl']
+                }),
+                objectManager = new ymaps.ObjectManager();
+
+            $.getJSON(
+                    './myjsonfile.geojson'
+                )
+                .done(function (geoJson) {
+
+                    geoJson.features.forEach(function (obj) {
+                        // Setting the balloon content.
+                        obj.properties.balloonContent = obj.properties.name;
+
+                    });
+                    // Adding JSON object descriptions to the object manager.
+                    objectManager.add(geoJson);
+                    // Adding objects to the map.
+                    map.geoObjects.add(objectManager);
+                });
+        });
+    </script>
+</body>
+
+</html>

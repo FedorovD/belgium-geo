@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100vh;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belgium</title>
+</head>
+
+<body style="overflow: none;height: 100vh;">
+    <div id="container" style="position: relative; width: 100%; height: 100%;overflow: auto;"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="./world.js"></script>
+    <script>
+        let map = new Datamap({element: document.getElementById('container')});
+/*         let map = new Datamap({
+            element: document.getElementById('container'),
+            geographyConfig: {
+                dataUrl: '/custom.json'
+            },
+            scope: 'custom',
+            setProjection: function (element, options) {
+                var projection, path;
+                projection = d3.geo.albersUsa()
+                    //.center([long, lat])
+                    .scale(element.offsetWidth)
+                    .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+                path = d3.geo.path()
+                    .projection(projection);
+
+                return {
+                    path: path,
+                    projection: projection
+                };
+            }
+        }); */
+    </script>
+</body>
+
+</html>
