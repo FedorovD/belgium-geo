@@ -68,6 +68,8 @@
 
     L.geoJSON(geojson, {
         pane: 'tilePane',
+     render:   L.canvas(),
+
     style: function (feature) {
         var color = colors[parseInt(Math.random() * 10)];
         return {color, weight: 1, fillColor: color, fillOpacity: 1 }
@@ -75,11 +77,12 @@
     }
     })
     .bindPopup(function (layer) {
-        //return layer.feature.properties.description;
+        return layer.feature.properties.NAMN;
     }).addTo(mymap);
 
 
     L.geoJSON(geojson, {
+     render:   L.canvas(),
     style: function (feature) {
         var color = colors[parseInt(Math.random() * 10)];
         return {color, weight: 1, fillColor: color, fillOpacity: 1 } //colors[parseInt(Math.random() * 10)]};
@@ -87,7 +90,7 @@
         
     }, filter: geoJsonFeature => ['kml_588', 'kml_507', 'kml_242', 'kml_307', 'kml_23', 'kml_141', 'kml_281', 'kml_66', 'kml_319'].includes(geoJsonFeature.properties.name)})
     .bindPopup(function (layer) {
-        //return layer.feature.properties.description;
+        return layer.feature.properties.NAMN;
     }).addTo(mymap);
 
 
